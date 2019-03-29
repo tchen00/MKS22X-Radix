@@ -1,4 +1,6 @@
 public class MyLinkedList{
+  // ----------------------- LINKEd LIST ------------------------------------------------------------------//
+
     private int length;
     private Node start,end;
 
@@ -196,6 +198,7 @@ public class MyLinkedList{
               other.end = null;
         }
   }
+  // ----------------------- NODE ------------------------------------------------------------------------------//
   class Node{
     private Integer data;
     private Node next,prev;

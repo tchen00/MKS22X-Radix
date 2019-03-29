@@ -392,6 +392,45 @@ public class MyLinkedList{
       }
   }
   class Node{
+    private Integer data;
+    private Node next,prev;
+     //constructor
+    public Node(Integer info) {
+      data = info;
+     }
+
+    //accessor methods to get info
+    public Node next() {
+      return next;
+    }
+
+    public Node prev() {
+      return prev;
+    }
+
+    //set methods
+    public void setNext(Node other) {
+      next = other;
+    }
+
+    public void setPrev(Node other) {
+      prev = other;
+    }
+
+    public Integer getData() {
+      return data;
+    }
+
+    //change node
+    public Integer setData(int i) {
+      data = i;
+      return data;
+    }
+
+    //toString
+    public String toString(){
+      return "" + data;
+    }
 
   }
 

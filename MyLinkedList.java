@@ -25,6 +25,13 @@ public class MyLinkedList{
       return length;
     }
 
+    //
+    public void clear(){
+      start = null;
+      end = null;
+      size = 0;
+    }
+
     public boolean add(Integer value) {
       //throwing proper exceptiosn
       if (value == null) throw new NullPointerException("from add to last");
@@ -161,17 +168,18 @@ public class MyLinkedList{
          return true;
      }
 
+     //in O(1) runtime, move the elements from other onto the end of this
+     //The size of other is reduced to 0
+     //The size of this is now the combined sizes of both original lists
      public void extend(MyLinkedList other){
-          //in O(1) runtime, move the elements from other onto the end of this
-          //The size of other is reduced to 0
-          //The size of this is now the combined sizes of both original lists
-          if (size() == 0){ // if size was 0
+          // if size was 0
+          if (size() == 0){
             if (other.size() == 1 ){
-              start = other.start; // move current start to the start of the other
+              start = other.start;
               length++;
-              other.length = 0;    // combined
+              other.length = 0;
             } else if (other.size() > 1){
-              start = other.start; // move current start
+              start = other.start;
               end = other.end;
               length = other.size();
               other.length = 0;

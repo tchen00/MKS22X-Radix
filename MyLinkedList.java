@@ -161,6 +161,21 @@ public class MyLinkedList<E>{
           return output.getData();
     }
 
+    // remove the 1st element of the list, and return that value.
+    public E removeFront(){
+      if (size() == 0) throw new NoSuchElementException("from removeFront");
+      E temp = start.getData(); // temp is the current getData
+      if (size() == 1){ // if linked list is 1, clear and return the temp
+        clear();
+        return temp;
+      }
+      // if size is greater than 1
+      start = start.next();
+      start.setPrev(null);
+      length--;
+      return temp;
+    }
+
      public boolean remove(Integer value) {
        // check to see if this value is in the linked list first
        if (!(contains(value))) return false;
@@ -176,7 +191,7 @@ public class MyLinkedList<E>{
        // if the size is greater than 0
        if (other.size() > 0){
          length += other.size(); // increase size to equal the current and the other
-         end.setNext(other.start); // adding the end of the current to the start of the other 
+         end.setNext(other.start); // adding the end of the current to the start of the other
          other.start.setPrev(end);
          end = other.end;
          other.length = 0;

@@ -1,5 +1,7 @@
-public class MyLinkedList{
-  // ----------------------- LINKEd LIST ------------------------------------------------------------------//
+import java.util.*;
+
+public class MyLinkedList<E>{
+  // ----------------------- LINKED LIST ------------------------------------------------------------------//
 
     private int length;
     private Node start,end;

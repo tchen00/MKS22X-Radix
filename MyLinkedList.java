@@ -34,7 +34,7 @@ public class MyLinkedList<E>{
       size = 0;
     }
 
-    public boolean add(Integer value) {
+    public boolean add(E value) {
       //throwing proper exceptiosn
       if (value == null) throw new NullPointerException("from add to last");
       // if the length is 0, create a new Node
@@ -55,7 +55,6 @@ public class MyLinkedList<E>{
         length++;
       } return true;
     }
-
 
     public String toString() {
       //start toString from beginning
@@ -173,41 +172,19 @@ public class MyLinkedList<E>{
      //in O(1) runtime, move the elements from other onto the end of this
      //The size of other is reduced to 0
      //The size of this is now the combined sizes of both original lists
-     public void extend(MyLinkedList other){
-          // if size was 0
-          if (size() == 0){
-            if (other.size() == 1 ){
-              start = other.start;
-              length++;
-              other.length = 0;
-            } else if (other.size() > 1){
-              start = other.start;
-              end = other.end;
-              length = other.size();
-              other.length = 0;
-            }
-          } else if (size () == 1) { // if size is equal to 1
-              if (other.size() == 1){
-                end = other.start;
-                length++;
-                other.length = 0;
-              } else if (other.size() > 1){
-                start.setNext(other.start);
-                other.start.setPrev(start);
-                length += other.size();
-                end = other.end;
-                other.length = 0;
-              }
-           } else if (other.size() > 1){ // if the other size is greater than 1
-              length += other.size();
-              end.setNext(other.start);
-              other.start.setPrev(end);
-              end = other.end;
-              other.length = 0;
-              other.start = null; // sets the other start and end to null so you can't access in the middle
-              other.end = null;
-        }
-  }
+     public void extend(MyLinkedList<E> other){
+       // if the size is greater than 0
+       if (other.size() > 0){
+         length += other.size(); // increase size to equal the current and the other
+         end.setNext(other.start); // adding the end of the current to the start of the other 
+         other.start.setPrev(end);
+         end = other.end;
+         other.length = 0;
+         other.start = null;
+         other.end = null;
+       }
+       }
+
   // ----------------------- NODE ------------------------------------------------------------------------------//
   class Node{
     private Integer data;

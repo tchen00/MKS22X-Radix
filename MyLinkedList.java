@@ -34,26 +34,22 @@ public class MyLinkedList<E>{
       size = 0;
     }
 
-    public boolean add(E value) {
-      //throwing proper exceptiosn
-      if (value == null) throw new NullPointerException("from add to last");
-      // if the length is 0, create a new Node
-      if (length == 0) {
-        Node n = new Node(value);
-        //making the next and prev null bc length 0
-        n.setPrev(null);
-        n.setNext(null);
-        start = n;
-        end = n;
-        length++;
-      } else {
-        Node n = new Node(value);
-        n.setPrev(end);
-        n.setNext(null);
-        end.setNext(n);
-        end = n;
-        length++;
-      } return true;
+    public boolean add(E value){
+      if (start == null){
+        start = new Node(value, null, null);
+        end = start;
+      }
+      else if (end == start){
+        end = new Node(value, null, start);
+        start.setNext(end);
+      }
+      else{
+        Node temp = new Node(value, null, end);
+        end.setNext(temp);
+        end = temp;
+      }
+      length++;
+      return true;
     }
 
     public String toString() {

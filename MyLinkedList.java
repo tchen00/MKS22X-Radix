@@ -75,40 +75,6 @@ public class MyLinkedList<E>{
       return current;
     }
 
-    public Integer get(int index) {
-      //adding proper exceptions here
-      if (index < 0 || index >= length) {
-        throw new IndexOutOfBoundsException("from the get method");
-      } return this.getNthNode(index).getData();
-    }
-
-    public Integer set(int i, Integer value){
-      // adding proper exceptions here
-      if (i < 0 || i >= length) {
-        throw new IndexOutOfBoundsException("from the set method");
-      } Integer old = this.get(i);
-        this.getNthNode(i).setData(value);
-        return old;
-    }
-
-    public boolean contains(Integer value) {
-      //returns whether if the value is in the LinkedList
-      for (int i = 0; i < length; i++) {
-        if (this.get(i).equals(value)) {
-          return true;
-        }
-      } return false;
-    }
-
-    public int indexOf(Integer value) {
-      //returning the first instance of the value, if any! if not return -1
-      for (int i = 0; i < length; i++) {
-        if (this.get(i).equals(value)) {
-          return i;
-        }
-      } return -1;
-    }
-
     public void add(int index, E value){
       if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
       if (index == size()){

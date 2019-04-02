@@ -139,28 +139,6 @@ public class MyLinkedList<E>{
       } length++;
     }
 
-    public Integer remove(int index){
-      if(index < 0 || index > length){
-        throw new IndexOutOfBoundsException();
-      } Node output = getNthNode(index);
-        if(index == 0){
-          //if remove from the first
-          output.next().setPrev(null);
-          start = output.next();
-        } else if (index == length - 1) {
-          //if remove from the end
-          output.prev().setNext(null);
-          end = output.prev();
-        } else {
-          // if you add it to the middle
-          Node left = output.prev();
-          Node right = output.next();
-          right.setPrev(left);
-          left.setNext(right);
-        } length--;
-          return output.getData();
-    }
-
     // remove the 1st element of the list, and return that value.
     public E removeFront(){
       if (size() == 0) throw new NoSuchElementException("from removeFront");

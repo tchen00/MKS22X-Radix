@@ -66,13 +66,18 @@ public class MyLinkedList<E>{
       } return output + "]";
     }
 
-    private Node getNthNode(int nod){
-      //mkaing this private bc if it wasn't this list will function like an array
-      Node current = start;
-      for (int i = 0; i < nod; i++){
-        current = current.next();
+    private Node getNthNode(int index){
+      int count = 0;
+      Node temp = start;
+      while (temp != null){
+        // when found
+        if (count == index){
+          return temp;
+        }
+        count++;
+        temp = temp.next();
       }
-      return current;
+      return null;
     }
 
     public void add(int index, E value){
@@ -109,14 +114,6 @@ public class MyLinkedList<E>{
       return temp;
     }
 
-     public boolean remove(Integer value) {
-       // check to see if this value is in the linked list first
-       if (!(contains(value))) return false;
-         // if it is ....
-         remove(indexOf(value));
-         return true;
-     }
-
      //in O(1) runtime, move the elements from other onto the end of this
      //The size of other is reduced to 0
      //The size of this is now the combined sizes of both original lists
@@ -135,11 +132,13 @@ public class MyLinkedList<E>{
 
   // ----------------------- NODE ------------------------------------------------------------------------------//
   class Node{
-    private Integer data;
+    private E data;
     private Node next,prev;
      //constructor
-    public Node(Integer info) {
-      data = info;
+     public Node(E value, Node nexty, Node backy){
+       data = value;
+       next = nexty;
+       prev = backy;
      }
 
     //accessor methods to get info

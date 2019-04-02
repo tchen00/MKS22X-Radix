@@ -22,7 +22,7 @@ public class MyLinkedList<E>{
       //sets the linked list node w/ start and end
     }
   */
-    // size!
+    // size
     public int size() {
       return length;
     }
@@ -113,30 +113,23 @@ public class MyLinkedList<E>{
       } return -1;
     }
 
-    public void add(int index, Integer value){
-      //throw proper exception
-      if(index < 0 || index > size()){
-        throw new IndexOutOfBoundsException();
+    public void add(int index, E value){
+      if (index < 0 || index > size()) throw new IndexOutOfBoundsException();
+      if (index == size()){
+        add(value);
       }
-      Node toAdd = new Node(value);
-      //if you add it to the front
-      if (index == 0){
-        toAdd.setNext(start);
-        start.setPrev(toAdd);
-        start = toAdd;
-      } else if (index == length) {
-        //if add to the end
-        toAdd.setPrev(end);
-        end.setNext(toAdd);
-        end = toAdd;
-      } else {
-        Node left = getNthNode(index - 1);//fix this
-        Node temp = left.next();
-        left.setNext(toAdd);
-        toAdd.setPrev(left);
-        toAdd.setNext(temp);
-        temp.setPrev(toAdd);
-      } length++;
+      else if (index == 0){
+        Node temp = new Node(value, start, null);
+        start.setPrev(temp);
+        start = temp;
+        length++;
+      }
+      else{
+        Node temp = new Node(value, getNthNode(index), getNthNode(index - 1));
+        getNthNode(index).setPrev(temp);
+        getNthNode(index - 1).setNext(temp);
+        length++;
+      }
     }
 
     // remove the 1st element of the list, and return that value.

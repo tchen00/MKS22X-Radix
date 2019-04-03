@@ -70,8 +70,11 @@ public class Radix{
   }
 
   public static void main(String[] args){
-    int[] data = {8, 12, 16, 0, 1, 2, 3, 90};
-     radixsort(data);
-     System.out.println(Arrays.toString(data));
+    int[] data = {8, 12, 16, 0, 1, 2, 3};
+        radixsort(data);
+        System.out.println(Arrays.toString(data));
+    int[] data1 = {-8, 12, -16, -0, -1, 2, 3};
+      radixsort(data1);
+      System.out.println(Arrays.toString(data1));
   }
 }

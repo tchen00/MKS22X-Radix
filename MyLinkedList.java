@@ -163,10 +163,11 @@ public class MyLinkedList<E>{
       return data;
     }
 
-    //change node
-    public Integer setData(int i) {
+    //change node  
+    public E setData(E i){
+      E temp = data;
       data = i;
-      return data;
+      return temp;
     }
 
     //toString

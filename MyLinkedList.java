@@ -118,17 +118,22 @@ public class MyLinkedList<E>{
      //The size of other is reduced to 0
      //The size of this is now the combined sizes of both original lists
      public void extend(MyLinkedList<E> other){
-       // if the size is greater than 0
-       if (other.size() > 0){
-         length += other.size(); // increase size to equal the current and the other
-         end.setNext(other.start); // adding the end of the current to the start of the other
+       //if size is 0
+       if (size() == 0){
+         start = other.start;
+         end = other.end;
+       }
+       else if (other.size() > 0){
+         // makes end of one list the start of the next
+         end.setNext(other.start);
          other.start.setPrev(end);
          end = other.end;
-         other.length = 0;
-         other.start = null;
-         other.end = null;
        }
-       }
+       // update length
+       length += other.length;
+       // clear other
+       other.clear();
+     }
 
   // ----------------------- NODE ------------------------------------------------------------------------------//
   class Node{

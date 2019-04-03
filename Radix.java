@@ -25,6 +25,18 @@ public class Radix{
           else buckets[9 - idx].add(temp);
         }
       }
+      // other passes
+      else{
+        while (list.size() > 0){
+          int num = list.removeFront();
+          // abs of digits (from above haha)
+          int idx = Math.abs((int)(num / (Math.pow(10, i))) % 10);
+          // if positive
+          if (num >= 0) buckets[idx + 10].add(num);
+          // if negative (thanks Mr. K again!)
+          else buckets[9 - idx].add(num);
+        }
+      }
     }
   }
 

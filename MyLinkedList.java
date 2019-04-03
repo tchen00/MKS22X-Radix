@@ -31,7 +31,7 @@ public class MyLinkedList<E>{
     public void clear(){
       start = null;
       end = null;
-      size = 0;
+      length = 0;
     }
 
     public boolean add(E value){
@@ -159,11 +159,10 @@ public class MyLinkedList<E>{
       prev = other;
     }
 
-    public Integer getData() {
+    public E getData() {
       return data;
     }
 
-    //change node  
     public E setData(E i){
       E temp = data;
       data = i;

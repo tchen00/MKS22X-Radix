@@ -37,6 +37,17 @@ public class Radix{
           else buckets[9 - idx].add(num);
         }
       }
+
+      // adding the buckets into first buckets
+      for (int k = 0; k < 20; k++){
+        list.extend(buckets[k]);
+      }
+    }
+
+    int idx = 0;
+    while (list.size() > 0){
+      data[idx] = list.removeFront();
+      idx++;
     }
   }
 
